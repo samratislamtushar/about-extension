@@ -9,7 +9,7 @@ if( !function_exists('is_elementor_version')){
 }
 
 if (!function_exists('get_all_pages')) {
-    function tp_get_all_pages()
+    function get_all_pages()
     {
 
         $page_list = get_posts(array(
@@ -138,6 +138,7 @@ function custom_kses($raw){
           'class'   => array(),
           'title'   => array(),
           'style'   => array(),
+          'data-count' => array(),
        ),
        'iframe'                 => array(
           'width'         => array(),

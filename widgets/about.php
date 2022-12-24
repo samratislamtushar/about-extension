@@ -52,7 +52,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
      */
     public function get_icon()
     {
-        return 'fas fa-bullhorn';
+        return 'fa fa-bullhorn';
     }
 
     /**
@@ -127,7 +127,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'tp_title_tag',
+            'title_tag',
             [
                 'label' => esc_html__('Title HTML Tag', 'layerdrops'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
@@ -244,7 +244,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                     'fa4compatibility' => 'icon',
                     'label_block' => true,
                     'default' => [
-                        'value' => 'fas fa-star',
+                        'value' => 'fas fa-check',
                         'library' => 'solid',
                     ],
                     'condition' => [
@@ -284,7 +284,6 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                 'default' => [
                     [
                         'features_title' => esc_html__('Discover', 'layerdrops'),
-                        'features_description' => esc_html__('Discover', 'layerdrops')
                     ],
                     [
                         'features_title' => esc_html__('Define', 'layerdrops')
@@ -298,14 +297,14 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
 
         // btn button group
         $this->start_controls_section(
-            'tp_btn_button_group',
+            'btn_button_group',
             [
                 'label' => esc_html__('Button', 'layerdrops'),
             ]
         );
 
         $this->add_control(
-            'tp_btn_button_show',
+            'btn_button_show',
             [
                 'label' => esc_html__('Show Button', 'layerdrops'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -325,7 +324,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                 'title' => esc_html__('Enter button text', 'layerdrops'),
                 'label_block' => true,
                 'condition' => [
-                    'tp_btn_button_show' => 'yes'
+                    'btn_button_show' => 'yes'
                 ],
             ]
         );
@@ -341,13 +340,13 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                 'default' => '1',
                 'label_block' => true,
                 'condition' => [
-                    'tp_btn_button_show' => 'yes'
+                    'btn_button_show' => 'yes'
                 ],
             ]
         );
 
         $this->add_control(
-            'tp_btn_link',
+            'btn_link',
             [
                 'label' => esc_html__('Button link', 'layerdrops'),
                 'type' => \Elementor\Controls_Manager::URL,
@@ -364,7 +363,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                 ],
                 'condition' => [
                     'btn_link_type' => '1',
-                    'tp_btn_button_show' => 'yes'
+                    'btn_button_show' => 'yes'
                 ],
                 'label_block' => true,
             ]
@@ -375,10 +374,10 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                 'label' => esc_html__('Select Button Page', 'layerdrops'),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'label_block' => true,
-                'options' => tp_get_all_pages(),
+                'options' => get_all_pages(),
                 'condition' => [
                     'btn_link_type' => '2',
-                    'tp_btn_button_show' => 'yes'
+                    'btn_button_show' => 'yes'
                 ]
             ]
         );
@@ -457,6 +456,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                 'default' => '#fe7f4c',
                 'selectors' => [
                     '{{WRAPPER}} .el-subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .section-title__tagline::before' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -529,6 +529,50 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         );
         $this->end_controls_section();
 
+        // title style
+        $this->start_controls_section(
+            'fea-title_style',
+            [
+                'label' => __('Feature Title', 'layerdrops'),
+                'tab' =>  \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'fea-title-color',
+            [
+                'label' => __('Color', 'layerdrops'),
+                'type' =>  \Elementor\Controls_Manager::COLOR,
+                'default' => '#1e3737',
+                'selectors' => [
+                    '{{WRAPPER}} .fea-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'fea-title-spacing',
+            [
+                'label' => __('Bottom Spacing', 'layerdrops'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'max' => 150,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .fea-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'fea-title_typography',
+                'selector' => '{{WRAPPER}} .fea-title',
+            ]
+        );
+        $this->end_controls_section();
+
         // desctiption style
         $this->start_controls_section(
             'desctiption_style',
@@ -573,6 +617,50 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         );
         $this->end_controls_section();
 
+        // fea desctiption style
+        $this->start_controls_section(
+            'fea-desctiption_style',
+            [
+                'label' => __('Feature Desctiption', 'layerdrops'),
+                'tab' =>  \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'fea-desctiption-color',
+            [
+                'label' => __('Color', 'layerdrops'),
+                'type' =>  \Elementor\Controls_Manager::COLOR,
+                'default' => '#6e7a7a',
+                'selectors' => [
+                    '{{WRAPPER}} .fea-desctiption' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'fea-desctiption-spacing',
+            [
+                'label' => __('Bottom Spacing', 'layerdrops'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'max' => 150,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .fea-desctiption' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'fea-desctiption_typography',
+                'selector' => '{{WRAPPER}} .fea-desctiption',
+            ]
+        );
+        $this->end_controls_section();
+
         // Icon style
         $this->start_controls_section(
             'icon_style',
@@ -593,7 +681,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                     ]
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .el-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .el-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -757,6 +845,58 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         $this->end_controls_tabs();
 
         $this->end_controls_section();
+
+
+          // desctiption style
+          $this->start_controls_section(
+            'extra_style',
+            [
+                'label' => __('Extra info', 'layerdrops'),
+                'tab' =>  \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'extra-color',
+            [
+                'label' => __('Color', 'layerdrops'),
+                'type' =>  \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .el-extra p' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'extra--counter-color',
+            [
+                'label' => __('Count Color', 'layerdrops'),
+                'type' =>  \Elementor\Controls_Manager::COLOR,
+                'default' => '#fe7f4c',
+                'selectors' => [
+                    '{{WRAPPER}} .el-extra .odometer' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'extra-bg-color',
+            [
+                'label' => __('Background Color', 'layerdrops'),
+                'type' =>  \Elementor\Controls_Manager::COLOR,
+                'default' => '#1e3737',
+                'selectors' => [
+                    '{{WRAPPER}} .el-extra' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .why-choose-one__img:before' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'extra_typography',
+                'selector' => '{{WRAPPER}} .el-extra p',
+            ]
+        );
+        $this->end_controls_section();
     }
 
     /**
@@ -781,8 +921,8 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
             $this->add_render_attribute('button-arg', 'rel', 'nofollow');
             $this->add_render_attribute('button-arg', 'class', 'thm-btn');
         } else {
-            if (!empty($settings['tp_btn_link']['url'])) {
-                $this->add_link_attributes('button-arg', $settings['tp_btn_link']);
+            if (!empty($settings['btn_link']['url'])) {
+                $this->add_link_attributes('button-arg', $settings['btn_link']);
                 $this->add_render_attribute('button-arg', 'class', 'thm-btn');
             }
         }
@@ -815,7 +955,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                                         if (!empty($settings['title'])) :
                                             printf(
                                                 '<%1$s %2$s>%3$s</%1$s>',
-                                                tag_escape($settings['tp_title_tag']),
+                                                tag_escape($settings['title_tag']),
                                                 $this->get_render_attribute_string('title_args'),
                                                 custom_kses($settings['title'])
                                             );
@@ -849,8 +989,8 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                                                     <?php endif; ?>
 
                                                     <div class="content">
-                                                        <h3 class="title"><?php echo custom_kses($item['features_title']); ?> </h3>
-                                                        <p class="text"><?php echo custom_kses($item['features_description']); ?></p>
+                                                        <h3 class="title fea-title"><?php echo custom_kses($item['features_title']); ?> </h3>
+                                                        <p class="text fea-desctiption"><?php echo custom_kses($item['features_description']); ?></p>
                                                     </div>
                                             </li>
                                         <?php endforeach ?>
@@ -872,8 +1012,8 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                                             <img src="<?php echo esc_url($ab_image); ?>" alt="<?php echo esc_attr($ab_image_alt); ?>">
                                         </div>
                                         <?php if (!empty($settings['client-info'])) : ?>
-                                            <div class="why-choose-one__trusted">
-                                                <p class="el-extra"><?php echo custom_kses($settings['client-info']); ?></p>
+                                            <div class="why-choose-one__trusted el-extra">
+                                                <p><?php echo custom_kses($settings['client-info']); ?></p>
                                             </div>
                                         <?php endif; ?>
                                     </div>

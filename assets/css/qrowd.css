@@ -133,7 +133,8 @@
   left: -3px;
   right: -3px;
   height: 6px;
-  background-color: rgba(254, 144, 67, .20);
+  background-color: rgb(254, 144, 67);
+  opacity: .20;
   z-index: -1;
 }
 

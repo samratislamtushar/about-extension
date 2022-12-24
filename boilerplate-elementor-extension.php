@@ -221,9 +221,10 @@ final class Boilerplate_Elementor_Extension {
 	 * @access public
 	 */
     public function widget_scripts() {
-		wp_register_script( 'odometer', plugins_url( 'assets/js/odometer.min.js', __FILE__ ), [ 'jquery' ]);
-		wp_register_script( 'acitve', plugins_url( 'assets/js/active.js', __FILE__ ), [ 'jquery' ]);
 
+		wp_enqueue_script( 'appear', plugins_url( 'assets/js/jquery.appear.min.js', __FILE__ ),['jquery']);
+		wp_enqueue_script( 'odometer', plugins_url( 'assets/js/odometer.min.js', __FILE__ ),['jquery']);
+		wp_enqueue_script( 'acitve', plugins_url( 'assets/js/active.js', __FILE__ ),['jquery']);
 	}
 
 	/**
