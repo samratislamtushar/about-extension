@@ -284,6 +284,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                 'default' => [
                     [
                         'features_title' => esc_html__('Discover', 'layerdrops'),
+                        'features_description' => esc_html__('Discover', 'layerdrops')
                     ],
                     [
                         'features_title' => esc_html__('Define', 'layerdrops')
@@ -601,7 +602,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         $this->start_controls_tab(
             '_tab_icon_normal',
             [
-                'label' => __('Normal', 'happy-elementor-addons'),
+                'label' => __('Normal', 'layerdrops'),
             ]
         );
         $this->add_control(
@@ -631,7 +632,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         $this->start_controls_tab(
             '_tab_title_hover',
             [
-                'label' => __('Hover', 'happy-elementor-addons'),
+                'label' => __('Hover', 'layerdrops'),
             ]
         );
         $this->add_control(
@@ -675,7 +676,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         $this->start_controls_tab(
             '_tab_btn_normal',
             [
-                'label' => __('Normal', 'happy-elementor-addons'),
+                'label' => __('Normal', 'layerdrops'),
             ]
         );
         $this->add_control(
@@ -703,7 +704,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         $this->add_responsive_control(
             'btn-radius',
             [
-                'label' => __('Border radius', 'happy-elementor-addons'),
+                'label' => __('Border radius', 'layerdrops'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -716,7 +717,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         $this->start_controls_tab(
             '_tab_btn_hover',
             [
-                'label' => __('Hover', 'happy-elementor-addons'),
+                'label' => __('Hover', 'layerdrops'),
             ]
         );
         $this->add_control(
@@ -744,7 +745,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
         $this->add_responsive_control(
             'btn-hover-radius',
             [
-                'label' => __('Border radius', 'happy-elementor-addons'),
+                'label' => __('Border radius', 'layerdrops'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
