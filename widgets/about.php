@@ -430,7 +430,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                 'label' => esc_html__('Client Info', 'layerdrops'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'rows' => 10,
-                'default' => esc_html__('Trusted by more <br> than <span class="odometer" data-count="3500">00</span>
+                'default' => custom_kses('Trusted by more <br> than <span class="odometer" data-count="3500">00</span>
                 <br>
                 clients', 'layerdrops'),
                 'placeholder' => esc_html__('Type your description here', 'layerdrops'),
@@ -835,7 +835,7 @@ class Dayerdrops_Widget extends \Elementor\Widget_Base
                                                 <?php if ($item['features_icon_type'] !== 'image') : ?>
                                                     <?php if (!empty($item['features_icon']) || !empty($item['features_selected_icon']['value'])) : ?>
                                                         <div class="icon el-icon">
-                                                            <?php tp_render_icon($item, 'features_icon', 'features_selected_icon'); ?>
+                                                            <?php el_render_icon($item, 'features_icon', 'features_selected_icon'); ?>
                                                         </div>
                                                     <?php endif; ?>
                                                 <?php else : ?>

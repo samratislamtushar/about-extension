@@ -43,8 +43,8 @@ function add_elementor_widget_categories( $elements_manager ) {
 
 }
 
-if(!function_exists('render_icon')){
-    function render_icon($settings = [], $old_icon_id = 'icon', $new_icon_id = 'selected_icon', $attributes = [])
+if(!function_exists('el_render_icon')){
+    function el_render_icon($settings = [], $old_icon_id = 'icon', $new_icon_id = 'selected_icon', $attributes = [])
     {
         // Check if its already migrated
         $migrated = isset($settings['__fa4_migrated'][$new_icon_id]);
@@ -53,6 +53,9 @@ if(!function_exists('render_icon')){
 
         $attributes['aria-hidden'] = 'true';
 
+        if (is_elementor_version('>=', '2.6.0') && ($is_new || $migrated)) {
+            \Elementor\Icons_Manager::render_icon($settings[$new_icon_id], $attributes);
+        } else {
             if (empty($attributes['class'])) {
                 $attributes['class'] = $settings[$old_icon_id];
             } else {
@@ -63,6 +66,7 @@ if(!function_exists('render_icon')){
                 }
             }
             printf('<i %s></i>', \Elementor\Utils::render_html_attributes($attributes));
+        }
     }
 }
 
