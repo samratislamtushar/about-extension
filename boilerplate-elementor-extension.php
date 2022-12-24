@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Layddrops About Widget 
- * Description: Just the boilerplate code for creating a custom elementor extension.
- * Plugin URI:  Layddrops.com
+ * Plugin Name: Layerdrops About Widget 
+ * Description: This it a test widget 
+ * Plugin URI:  layerdrops.com
  * Version:     1.0.0
  * Author:      Samrat Islam Tushar
- * Author URI:  xoomcoders.com
+ * Author URI:  https://www.facebook.com/samratislamtushar
  * Text Domain: layerdrops
  */
 
